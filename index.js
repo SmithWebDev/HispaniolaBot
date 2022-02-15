@@ -1,15 +1,11 @@
-// Requiring imported files
-const {Client, Intents } = require('discord.js');
+const {Client, Collection } = require('discord.js');
+const client = new Client({intents: 32767});
 const {token, prefix} = require('./botconfig.json');
 const botconfig = require('./botconfig.json');
-const client = new Client({intents: 32767});
+
+client.commands = new Collection()
+
 require('./Handlers/Events')(client);
 
-//When client is ready, this code will run
-//client.once('ready', () => {
-//  console.log('Ready!');
-//  client.user.setActivity("Server", {type: "WATCHING"})
-//});
 
-//Login to Discord with client's token
 client.login(token);
